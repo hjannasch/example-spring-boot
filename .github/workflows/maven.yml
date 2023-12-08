@@ -16,4 +16,4 @@ on:
 
 jobs:
   maven-build:
-    uses: hjannasch/.github/.github/workflows/java21-maven-build.yml@main
+    uses: hjannasch/workflows-java/.github/workflows/java21-maven-build.yml@main
