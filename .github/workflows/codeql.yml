@@ -20,7 +20,7 @@ on:
     - cron: '22 20 * * 3'
 
 jobs:
-  maven-build:
+  java-codeql:
     uses: hjannasch/workflows-java/.github/workflows/java-maven-codeql.yml@main
     permissions:
       actions: read
