@@ -13,10 +13,15 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  maven-build:
+  java-build:
     uses: hjannasch/workflows-java/.github/workflows/java-maven-build.yml@main
+    with:
+      surefire-report: true
+    secrets:
+      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
     permissions:
       contents: read
       checks: write

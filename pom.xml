@@ -10,13 +10,27 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>example-spring-boot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${revision}.${changelist}</version>
 	<name>example-spring-boot</name>
 	<description>Demo project for Spring Boot</description>
+
 	<properties>
-		<maven.surefire.plugin.version>3.2.3</maven.surefire.plugin.version>
+		<revision>0.1</revision>
+		<changelist>999999999999</changelist>
 		<java.version>21</java.version>
+
+		<maven.jib.plugin.version>3.4.0</maven.jib.plugin.version>
+		<maven.surefire.plugin.version>3.2.3</maven.surefire.plugin.version>
+
+		<docker.base.image>
+			${docker.nexus.host}/devops/debian-12-jre-21-proxy:latest
+		</docker.base.image>
+		<docker.image.name>example-spring-boot-github</docker.image.name>
+		<docker.image.version>${project.version}</docker.image.version>
+		<docker.port.expose>8080</docker.port.expose>
+		<docker.nexus.host>docker.nexus.itbs.linkyard-cloud.ch</docker.nexus.host>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,6 +85,38 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>${maven.jib.plugin.version}</version>
+				<configuration>
+					<from>
+						<image>${docker.base.image}</image>
+						<auth>
+							<username>${env.NEXUS_DOCKER_USER}</username>
+							<password>${env.NEXUS_DOCKER_PASSWORD}</password>
+						</auth>
+					</from>
+					<to>
+						<image>${docker.nexus.host}/kdm/${docker.image.name}:${docker.image.version}</image>
+						<tags>
+							<tag>latest</tag>
+							<tag>${docker.image.version}</tag>
+						</tags>
+						<auth>
+							<username>${env.NEXUS_DOCKER_USER}</username>
+							<password>${env.NEXUS_DOCKER_PASSWORD}</password>
+						</auth>
+					</to>
+					<container>
+						<user>nonroot:nonroot</user>
+						<ports>
+							<port>${docker.port.expose}</port>
+						</ports>
+						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+					</container>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>pl.project13.maven</groupId>
