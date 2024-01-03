@@ -17,3 +17,6 @@ on:
 jobs:
   maven-build:
     uses: hjannasch/workflows-java/.github/workflows/java-maven-build.yml@main
+    permissions:
+      contents: read
+      checks: write
