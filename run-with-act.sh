@@ -1,0 +1,1 @@
+act --input surefire-report=false -j java-build act -P ubuntu-latest=quay.io/jamezp/act-maven
