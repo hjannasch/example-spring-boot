@@ -22,8 +22,8 @@ jobs:
     with:
       surefire-report: true
     secrets:
-      CONTAINER_REGISTRY_USER: ${{ secrets.NEXUS_DOCKER_USER }}
-      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.NEXUS_DOCKER_PASSWORD }}
+      CONTAINER_REGISTRY_USER: ${{ secrets.CONTAINER_REGISTRY_USER }}
+      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
     permissions:
       contents: read
       checks: write
