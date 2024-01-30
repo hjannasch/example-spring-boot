@@ -22,6 +22,8 @@ on:
 jobs:
   java-codeql:
     uses: hjannasch/workflows-java/.github/workflows/java-maven-codeql.yml@main
+    with:
+      working-directory: '.'
     permissions:
       actions: read
       contents: read
