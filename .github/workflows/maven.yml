@@ -21,6 +21,7 @@ jobs:
     uses: hjannasch/workflows-java/.github/workflows/java-maven-build.yml@main
     with:
       surefire-report: true
+      working-directory: "."
     secrets:
       CONTAINER_REGISTRY_USER: ${{ secrets.CONTAINER_REGISTRY_USER }}
       CONTAINER_REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
