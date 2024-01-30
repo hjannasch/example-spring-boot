@@ -93,10 +93,6 @@
 				<configuration>
 					<from>
 						<image>${docker.base.image}</image>
-						<auth>
-							<username>${env.CONTAINER_REGISTRY_USER}</username>
-							<password>${env.CONTAINER_REGISTRY_PASSWORD}</password>
-						</auth>
 					</from>
 					<to>
 						<image>${docker.nexus.host}/kdm/${docker.image.name}:${docker.image.version}</image>
@@ -104,10 +100,6 @@
 							<tag>latest</tag>
 							<tag>${docker.image.version}</tag>
 						</tags>
-						<auth>
-							<username>${env.CONTAINER_REGISTRY_USER}</username>
-							<password>${env.CONTAINER_REGISTRY_PASSWORD}</password>
-						</auth>
 					</to>
 					<container>
 						<user>nonroot:nonroot</user>
