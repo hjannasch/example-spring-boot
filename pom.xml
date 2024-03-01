@@ -19,7 +19,7 @@
 		<changelist>999999999999</changelist>
 		<java.version>21</java.version>
 
-		<maven.jib.plugin.version>3.4.0</maven.jib.plugin.version>
+		<maven.jib.plugin.version>3.4.1</maven.jib.plugin.version>
 		<maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
 
 		<docker.base.image>
